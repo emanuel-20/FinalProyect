@@ -1,0 +1,41 @@
+<Window x:Class="Pro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pro"
+        mc:Ignorable="d"
+        Title="SAI.Corp" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0">Cds de Música</Label>
+        <TextBox Grid.Row="1"
+                 x:Name="txtResultados" Margin="0,0.4,0.2,188"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
+            <TextBox x:Name="txtTodo"/>
+            <Button x:Name="btnBase" Margin="0,5,0,0" Click="ButtonBase" Content="Cargar Base de Datos"/>
+            <Button x:Name="btnMySQL" Margin="0,5,0,0" Click="ButtonMySQL" Content="Cargar a MySQL"/>
+            <Button x:Name="btnID" Margin="0,5,0,0" Click="ButtonID" Content="Buscar por ID"/>
+            <Button x:Name="btnNombre" Margin="0,5,0,0" Click="ButtonNombre" Content="Buscar por Nombre"/>
+            <Button x:Name="btnAlbum" Margin="0,5,0,0" Click="ButtonAlbum" Content="Buscar por Album"/>
+            <Button x:Name="btnPrecio" Margin="0,5,0,0" Click="ButtonPrecio" Content="Buscar por Precio"/>
+            <Button x:Name="btnFecha" Margin="0,5,0,0" Click="ButtonFecha" Content="Buscar por Fecha"/>
+            <Button x:Name="btnCantidad" Margin="0,5,0,0" Click="ButtonCantidad" Content="Buscar por Cantidad"/>
+            <Button x:Name="btnTodo" Margin="0,5,0,0" Click="ButtonBuscarTodo" Content="Buscar Todo"/>
+
+        </StackPanel>
+        <DataGrid x:Name="datagrid1" HorizontalAlignment="Left" Height="167" Margin="10,191.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="377"/>
+    </Grid>
+    <Window.Resources>
+        <local:dbprogra1aDataSet x:Key="dbprogra1aDataSet"/>
+        <CollectionViewSource x:Key="tb_músicaViewSource" Source="{Binding tb_música, Source={StaticResource dbprogra1aDataSet}}"/>
+    </Window.Resources>
+</Window>
